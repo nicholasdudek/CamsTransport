@@ -356,32 +356,53 @@ class CamsTransportAttendance {
 
     setupModals() {
         const addEmployeeModal = document.getElementById('add-employee-modal');
+        const editEmployeeModal = document.getElementById('edit-employee-modal');
         const addEmployeeBtn = document.getElementById('add-employee');
-        const closeButtons = document.querySelectorAll('.modal-close, .modal-cancel');
         const addEmployeeForm = document.getElementById('add-employee-form');
+        const editEmployeeForm = document.getElementById('edit-employee-form');
         
+        // Add employee modal
         addEmployeeBtn.addEventListener('click', () => {
             addEmployeeModal.classList.add('active');
         });
         
-        closeButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                addEmployeeModal.classList.remove('active');
-                addEmployeeForm.reset();
+        // Close modals
+        document.querySelectorAll('.modal-close, .modal-cancel').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const modal = e.target.closest('.modal');
+                modal.classList.remove('active');
+                if (modal === addEmployeeModal) {
+                    addEmployeeForm.reset();
+                } else if (modal === editEmployeeModal) {
+                    editEmployeeForm.reset();
+                }
             });
         });
         
+        // Close modals on backdrop click
+        [addEmployeeModal, editEmployeeModal].forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    if (modal === addEmployeeModal) {
+                        addEmployeeForm.reset();
+                    } else if (modal === editEmployeeModal) {
+                        editEmployeeForm.reset();
+                    }
+                }
+            });
+        });
+        
+        // Add employee form submission
         addEmployeeForm.addEventListener('submit', (e) => {
             e.preventDefault();
             this.addEmployee();
         });
         
-        // Close modal when clicking outside
-        addEmployeeModal.addEventListener('click', (e) => {
-            if (e.target === addEmployeeModal) {
-                addEmployeeModal.classList.remove('active');
-                addEmployeeForm.reset();
-            }
+        // Edit employee form submission
+        editEmployeeForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            this.updateEmployee();
         });
     }
 
@@ -597,8 +618,67 @@ class CamsTransportAttendance {
     }
 
     editEmployee(employeeId) {
-        // For now, just show an alert - could implement full edit modal later
-        this.showNotification('Edit functionality coming soon!', 'info');
+        const employee = this.employees.find(emp => emp.id === employeeId);
+        if (!employee) return;
+        
+        // Store the current employee ID being edited
+        this.currentEditEmployeeId = employeeId;
+        
+        // Populate the edit form with current employee data
+        document.getElementById('edit-employee-name').value = employee.name;
+        document.getElementById('edit-employee-id').value = employee.employeeId;
+        document.getElementById('edit-employee-department').value = employee.department;
+        document.getElementById('edit-employee-phone').value = employee.phone || '';
+        
+        // Show the edit modal
+        document.getElementById('edit-employee-modal').classList.add('active');
+    }
+
+    updateEmployee() {
+        const form = document.getElementById('edit-employee-form');
+        const name = document.getElementById('edit-employee-name').value.trim();
+        const employeeId = document.getElementById('edit-employee-id').value.trim();
+        const department = document.getElementById('edit-employee-department').value;
+        const phone = document.getElementById('edit-employee-phone').value.trim();
+        
+        if (!name || !employeeId) {
+            this.showNotification('Please fill in all required fields!', 'error');
+            return;
+        }
+        
+        // Find the employee being edited
+        const employeeIndex = this.employees.findIndex(emp => emp.id === this.currentEditEmployeeId);
+        if (employeeIndex === -1) {
+            this.showNotification('Employee not found!', 'error');
+            return;
+        }
+        
+        // Check if the new employee ID conflicts with another employee
+        const existingEmployee = this.employees.find(emp => emp.employeeId === employeeId && emp.id !== this.currentEditEmployeeId);
+        if (existingEmployee) {
+            this.showNotification('Employee ID already exists!', 'error');
+            return;
+        }
+        
+        // Update the employee
+        this.employees[employeeIndex] = {
+            ...this.employees[employeeIndex],
+            name: name,
+            employeeId: employeeId,
+            department: department,
+            phone: phone
+        };
+        
+        this.saveData();
+        this.renderEmployees();
+        this.renderEmployeeManagement();
+        
+        // Close modal and reset form
+        document.getElementById('edit-employee-modal').classList.remove('active');
+        form.reset();
+        this.currentEditEmployeeId = null;
+        
+        this.showNotification('Employee updated successfully!', 'success');
     }
 
     deleteEmployee(employeeId) {
