@@ -22,7 +22,7 @@ body {
 .header {
     background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
     color: white;
-    padding: 2vh 30px;
+    padding: clamp(15px, 2.5vw, 30px);
     border-radius: 15px;
     margin-bottom: 20px;
     display: flex;
@@ -30,51 +30,61 @@ body {
     align-items: center;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     width: 100%;
-    min-height: 18vh;
+    /* Header height is now based on logo size + padding */
+    min-height: fit-content;
 }
 
 .logo-section {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 20px;
-    width: 100%;
-    padding: 0 15px;
+    justify-content: flex-start;
+    gap: clamp(15px, 3vw, 25px);
     flex: 1;
+    /* Allow logo to determine the section height */
+    min-height: fit-content;
 }
 
-/* Removed logo-placeholder styles - no longer needed */
-
 .logo-image {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
+    /* Use natural logo dimensions as basis */
+    height: clamp(60px, 8vw, 120px);
+    width: auto; /* Maintain aspect ratio */
+    object-fit: contain; /* Never crop or distort */
     border-radius: 8px;
-    max-width: 100%;
-    max-height: 12vh;
-    min-height: 80px;
+    /* Ensure logo is fully visible */
+    flex-shrink: 0;
 }
 
 /* Removed logo-text styles - no longer needed */
 
 .header h1 {
-    font-size: 2rem;
+    /* Scale font size relative to logo height */
+    font-size: clamp(1.25rem, 4vw, 2.5rem);
     font-weight: 600;
+    /* Ensure title doesn't get too wide */
+    line-height: 1.2;
+    margin: 0;
 }
 
 .date-time {
     text-align: right;
+    /* Ensure date/time section doesn't shrink too much */
+    flex-shrink: 0;
+    min-width: fit-content;
 }
 
 .current-date {
-    font-size: 1.2rem;
+    /* Scale relative to header title */
+    font-size: clamp(0.9rem, 2.5vw, 1.4rem);
     font-weight: 600;
     margin-bottom: 5px;
+    line-height: 1.2;
 }
 
 .current-time {
-    font-size: 1rem;
+    /* Scale relative to date */
+    font-size: clamp(0.8rem, 2vw, 1.1rem);
     opacity: 0.9;
+    line-height: 1.2;
 }
 
 /* Navigation Styles */
@@ -702,46 +712,45 @@ body {
         padding: 15px;
         max-width: 100%;
     }
-    
-    .header {
-        flex-direction: column;
-        gap: 20px;
-        text-align: center;
-        padding: 20px;
-    }
-    
-    .header h1 {
-        font-size: 1.8rem;
-    }
-    
-    .logo-section {
+     .header {
         flex-direction: column;
         gap: 15px;
+        text-align: center;
+        padding: clamp(15px, 4vw, 25px);
+    }
+
+    .header h1 {
+        font-size: clamp(1.1rem, 5vw, 1.8rem);
+        line-height: 1.3;
+    }
+
+    .logo-section {
+        flex-direction: column;
+        gap: 12px;
         justify-content: center;
         width: 100%;
-        padding: 0 15px;
+        text-align: center;
     }
     
     .logo-image {
-        width: 100%;
-        height: auto;
+        height: clamp(50px, 12vw, 80px);
+        width: auto;
         object-fit: contain;
         border-radius: 6px;
-        max-width: 100%;
-        max-height: 10vh;
-        min-height: 60px;
+        align-self: center;
     }
-    
+
     .date-time {
         text-align: center;
+        width: 100%;
     }
-    
+
     .current-date {
-        font-size: 1rem;
+        font-size: clamp(0.85rem, 3vw, 1rem);
     }
-    
+
     .current-time {
-        font-size: 0.9rem;
+        font-size: clamp(0.75rem, 2.5vw, 0.9rem);
     }
     
     .navigation {
@@ -903,14 +912,24 @@ body {
     }
     
     .header {
-        padding: 15px;
+        padding: clamp(12px, 3vw, 20px);
     }
     
     .header h1 {
-        font-size: 1.4rem;
+        font-size: clamp(1rem, 4.5vw, 1.4rem);
     }
     
-    /* Mobile logo styles already handled in 768px breakpoint */
+    .logo-image {
+        height: clamp(40px, 10vw, 60px);
+    }
+    
+    .current-date {
+        font-size: clamp(0.8rem, 2.8vw, 0.95rem);
+    }
+    
+    .current-time {
+        font-size: clamp(0.7rem, 2.3vw, 0.85rem);
+    }
     
     .main-content {
         padding: 15px;
@@ -972,10 +991,21 @@ body {
     .header {
         flex-direction: row;
         justify-content: space-between;
+        padding: clamp(10px, 2vw, 20px);
     }
     
     .logo-section {
         flex-direction: row;
+        gap: clamp(10px, 2vw, 20px);
+        text-align: left;
+    }
+    
+    .logo-image {
+        height: clamp(35px, 8vw, 60px);
+    }
+    
+    .header h1 {
+        font-size: clamp(1rem, 3vw, 1.6rem);
     }
     
     .stats-grid {
