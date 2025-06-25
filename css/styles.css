@@ -57,9 +57,6 @@ body {
     height: 40px;
     object-fit: contain;
     border-radius: 6px;
-    padding: 4px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .logo-text {
@@ -747,13 +744,10 @@ body {
     }
     
     .logo-image {
-        width: 28px;
-        height: 28px;
-        padding: 0;
-        background: none;
-        border: none;
-        box-sizing: border-box;
-        max-width: 100%;
+        width: 36px;
+        height: 36px;
+        object-fit: contain;
+        border-radius: 6px;
     }
     
     .logo-text {
