@@ -730,15 +730,30 @@ body {
     .logo-section {
         flex-direction: column;
         gap: 15px;
+        overflow: hidden;
+        width: 100%;
     }
     
     .logo-placeholder {
         justify-content: center;
         padding: 12px 16px;
+        overflow: hidden;
+        max-width: 100%;
+        box-sizing: border-box;
     }
     
     .logo-placeholder i {
         font-size: 2rem;
+    }
+    
+    .logo-image {
+        width: 28px;
+        height: 28px;
+        padding: 0;
+        background: none;
+        border: none;
+        box-sizing: border-box;
+        max-width: 100%;
     }
     
     .logo-text {
