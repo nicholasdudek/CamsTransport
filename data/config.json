@@ -1,0 +1,93 @@
+{
+  "company": {
+    "name": "Cam's Transport",
+    "logo": "🚛",
+    "primaryColor": "#dc2626",
+    "secondaryColor": "#b91c1c"
+  },
+  "settings": {
+    "workStartTime": "08:00",
+    "lateThreshold": 15,
+    "timeZone": "America/New_York"
+  },
+  "departments": [
+    {
+      "id": "drivers",
+      "name": "Drivers",
+      "description": "Vehicle operators and delivery personnel"
+    },
+    {
+      "id": "maintenance", 
+      "name": "Maintenance",
+      "description": "Vehicle maintenance and repair staff"
+    },
+    {
+      "id": "administration",
+      "name": "Administration", 
+      "description": "Office and administrative staff"
+    },
+    {
+      "id": "logistics",
+      "name": "Logistics",
+      "description": "Route planning and logistics coordination"
+    }
+  ],
+  "attendanceStatus": {
+    "present": {
+      "label": "Present",
+      "color": "#10b981",
+      "icon": "fas fa-check",
+      "description": "Employee arrived on time"
+    },
+    "absent": {
+      "label": "Absent",
+      "color": "#ef4444", 
+      "icon": "fas fa-times",
+      "description": "Employee did not show up"
+    },
+    "late": {
+      "label": "Late",
+      "color": "#f59e0b",
+      "icon": "fas fa-clock", 
+      "description": "Employee arrived after scheduled time"
+    }
+  },
+  "defaultEmployees": [
+    {
+      "name": "Mike Johnson",
+      "employeeId": "CT001",
+      "department": "drivers",
+      "phone": "(555) 123-4567"
+    },
+    {
+      "name": "Sarah Williams", 
+      "employeeId": "CT002",
+      "department": "administration",
+      "phone": "(555) 234-5678"
+    },
+    {
+      "name": "David Brown",
+      "employeeId": "CT003", 
+      "department": "maintenance",
+      "phone": "(555) 345-6789"
+    },
+    {
+      "name": "Lisa Davis",
+      "employeeId": "CT004",
+      "department": "drivers", 
+      "phone": "(555) 456-7890"
+    },
+    {
+      "name": "Robert Wilson",
+      "employeeId": "CT005",
+      "department": "logistics",
+      "phone": "(555) 567-8901"
+    },
+    {
+      "name": "Jennifer Taylor", 
+      "employeeId": "CT006",
+      "department": "drivers",
+      "phone": "(555) 678-9012"
+    }
+  ]
+}
