@@ -22,7 +22,7 @@ body {
 .header {
     background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
     color: white;
-    padding: 20px 30px;
+    padding: 25px 30px;
     border-radius: 15px;
     margin-bottom: 20px;
     display: flex;
@@ -45,11 +45,11 @@ body {
 
 .logo-image {
     width: calc(100% - 30px);
-    height: 80px;
+    height: 120px;
     object-fit: contain;
     border-radius: 8px;
     max-width: 100%;
-    margin: 10px 0;
+    margin: 15px 0;
 }
 
 /* Removed logo-text styles - no longer needed */
@@ -721,11 +721,11 @@ body {
     
     .logo-image {
         width: calc(100% - 30px);
-        height: 70px;
+        height: 100px;
         object-fit: contain;
         border-radius: 6px;
         max-width: 100%;
-        margin: 8px 0;
+        margin: 12px 0;
     }
     
     .date-time {
