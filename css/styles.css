@@ -38,15 +38,17 @@ body {
     justify-content: center;
     gap: 20px;
     width: 100%;
+    padding: 0 15px;
 }
 
 /* Removed logo-placeholder styles - no longer needed */
 
 .logo-image {
-    width: 100%;
+    width: calc(100% - 30px);
     height: 60px;
     object-fit: cover;
     border-radius: 8px;
+    max-width: 100%;
 }
 
 /* Removed logo-text styles - no longer needed */
@@ -713,13 +715,15 @@ body {
         gap: 15px;
         justify-content: center;
         width: 100%;
+        padding: 0 15px;
     }
     
     .logo-image {
-        width: 100%;
+        width: calc(100% - 30px);
         height: 50px;
         object-fit: cover;
         border-radius: 6px;
+        max-width: 100%;
     }
     
     .date-time {
