@@ -52,6 +52,13 @@ body {
     color: #fff;
 }
 
+.logo-image {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    border-radius: 6px;
+}
+
 .logo-text {
     font-weight: 700;
     font-size: 1.2rem;
@@ -686,23 +693,85 @@ body {
 }
 
 /* Responsive Design */
+@media (max-width: 1200px) {
+    .container {
+        max-width: 95%;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+    
+    .employee-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+}
+
 @media (max-width: 768px) {
     .container {
-        padding: 10px;
+        padding: 15px;
+        max-width: 100%;
     }
     
     .header {
         flex-direction: column;
         gap: 20px;
         text-align: center;
+        padding: 20px;
+    }
+    
+    .header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .logo-section {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .logo-placeholder {
+        justify-content: center;
+        padding: 12px 16px;
+    }
+    
+    .logo-placeholder i {
+        font-size: 2rem;
+    }
+    
+    .logo-text {
+        font-size: 1rem;
+    }
+    
+    .date-time {
+        text-align: center;
+    }
+    
+    .current-date {
+        font-size: 1rem;
+    }
+    
+    .current-time {
+        font-size: 0.9rem;
     }
     
     .navigation {
         flex-direction: column;
+        gap: 8px;
     }
     
     .nav-btn {
         justify-content: flex-start;
+        padding: 12px 16px;
+        font-size: 0.9rem;
+    }
+    
+    .nav-btn i {
+        font-size: 1rem;
+    }
+    
+    .main-content {
+        padding: 20px;
+        border-radius: 12px;
     }
     
     .page-header {
@@ -711,21 +780,80 @@ body {
         align-items: flex-start;
     }
     
+    .page-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .date-selector {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .date-selector input {
+        flex: 1;
+        max-width: 150px;
+    }
+    
     .stats-grid {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    
+    .stat-card {
+        padding: 15px;
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .stat-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    
+    .stat-number {
+        font-size: 1.5rem;
+    }
+    
+    .stat-label {
+        font-size: 0.8rem;
     }
     
     .employee-grid {
         grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .employee-card {
+        padding: 15px;
+    }
+    
+    .attendance-controls {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .attendance-btn {
+        padding: 12px;
+        font-size: 0.9rem;
     }
     
     .action-buttons {
         flex-direction: column;
+        gap: 10px;
+    }
+    
+    .btn-primary, .btn-secondary, .btn-danger, .btn-action {
+        width: 100%;
+        justify-content: center;
+        padding: 14px 20px;
     }
     
     .report-filters {
         flex-direction: column;
         align-items: stretch;
+        gap: 12px;
     }
     
     .report-filters select,
@@ -733,23 +861,172 @@ body {
     .report-filters button {
         width: 100%;
     }
-}
-
-@media (max-width: 480px) {
-    .main-content {
+    
+    .employee-list-item {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+        padding: 15px;
+    }
+    
+    .employee-list-info {
+        width: 100%;
+    }
+    
+    .employee-list-actions {
+        width: 100%;
+        justify-content: space-around;
+    }
+    
+    .btn-edit, .btn-delete {
+        flex: 1;
+        text-align: center;
+        padding: 10px;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 20px;
+    }
+    
+    .modal-header {
+        padding: 15px 20px;
+    }
+    
+    .modal-body {
         padding: 20px;
     }
     
+    .form-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .form-actions button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .header {
+        padding: 15px;
+    }
+    
     .header h1 {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
     }
     
     .logo-placeholder {
         flex-direction: column;
         text-align: center;
+        padding: 10px;
+    }
+    
+    .logo-placeholder i {
+        font-size: 1.8rem;
     }
     
     .logo-text {
+        font-size: 0.9rem;
+    }
+    
+    .main-content {
+        padding: 15px;
+    }
+    
+    .page-header h2 {
+        font-size: 1.3rem;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .stat-card {
+        padding: 12px;
+    }
+    
+    .employee-card {
+        padding: 12px;
+    }
+    
+    .employee-name {
         font-size: 1rem;
+    }
+    
+    .employee-details {
+        font-size: 0.8rem;
+    }
+    
+    .modal-content {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        max-height: 100vh;
+    }
+    
+    .setting-group {
+        padding: 15px;
+    }
+}
+
+/* Large desktop screens */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1200px;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .employee-grid {
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    }
+}
+
+/* Landscape mobile devices */
+@media (max-width: 768px) and (orientation: landscape) {
+    .header {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    .logo-section {
+        flex-direction: row;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .stat-card {
+        flex-direction: row;
+        text-align: left;
+    }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+    .nav-btn, .attendance-btn, .btn-primary, .btn-secondary, .btn-danger {
+        min-height: 44px;
+        padding: 12px 16px;
+    }
+    
+    .employee-card:hover {
+        transform: none;
+        border-color: #e5e7eb;
+    }
+    
+    .stat-card:hover {
+        transform: none;
+    }
+    
+    .btn-primary:hover, .btn-secondary:hover, .btn-danger:hover {
+        transform: none;
     }
 }
