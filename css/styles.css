@@ -30,7 +30,7 @@ body {
     align-items: center;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     width: 100%;
-    min-height: 15vh;
+    min-height: 18vh;
 }
 
 .logo-section {
@@ -40,19 +40,19 @@ body {
     gap: 20px;
     width: 100%;
     padding: 0 15px;
+    flex: 1;
 }
 
 /* Removed logo-placeholder styles - no longer needed */
 
 .logo-image {
-    width: calc(100% - 30px);
-    height: 12vh;
+    width: 100%;
+    height: auto;
     object-fit: contain;
     border-radius: 8px;
     max-width: 100%;
-    margin: 1vh 0;
+    max-height: 12vh;
     min-height: 80px;
-    max-height: 150px;
 }
 
 /* Removed logo-text styles - no longer needed */
@@ -723,14 +723,13 @@ body {
     }
     
     .logo-image {
-        width: calc(100% - 30px);
-        height: 10vh;
+        width: 100%;
+        height: auto;
         object-fit: contain;
         border-radius: 6px;
         max-width: 100%;
-        margin: 0.8vh 0;
+        max-height: 10vh;
         min-height: 60px;
-        max-height: 120px;
     }
     
     .date-time {
